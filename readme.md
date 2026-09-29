@@ -17,7 +17,7 @@ preprocessing
 
 ### 2. Missing Value Imputation
 * **Issue:** Missing entries detected in critical numerical features: `age` and `total_spending`.
-* **Fix:** Dropped records as there were not much
+* **Fix:** Dropped "age" and fill "tota_spending"
 
 ### 3. Schema & Memory Optimization (Type Casting)
 * **Issue:** Default `float64` datatypes consumed excessive memory and inappropriately represented discrete counts (like age).
