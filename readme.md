@@ -42,7 +42,7 @@ preprocessing
 ## 📊 Summary of Optimization
 
 | Metric / Stage | Raw Dataset    | Cleaned Dataset |
-| :--- |:---------------| :--- |
-| **Total Rows** | 61             | 56 |
-| **Missing Values** | 2              | 0 |
-| **Memory Footprint** | 8.2+ KB | 6.6+ KB |
+| :--- |:---------------|:----------------|
+| **Total Rows** | 61             | 57              |
+| **Missing Values** | 2              | 0               |
+| **Memory Footprint** | 8.2+ KB | 6.6+ KB         |
