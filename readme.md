@@ -26,25 +26,19 @@ Cleaning and validating a small customer dataset (61 rows, 17 columns) with pand
 
 ## Data Quality Issues and How They Were Handled
 
-| # | Issue | Action | Rows affected |
-|---|---|---|---|
-| 1 | Exact duplicate row (customer 1014) | Removed with `drop_duplicates()` | 1 |
-| 2 | Missing `age` | [Dropped the row] | 1 |
-| 3 | Missing `total_spending` | [Recomputed as `purchase_count × avg_order_value`] | [0 removed] |
-| 4 | Impossible age (145) | Removed; valid age range is [18–90] | 1 |
-| 5 | Customer with `purchase_count = 0` | [Removed: no purchases, so not an active customer] | 1 |
-| 6 | `total_spending` inconsistent with `purchase_count × avg_order_value` (e.g. customer 1030: 25,000 vs about 4,079) | [Corrected / removed] | [n] |
+| # | Issue | Action                                                                   | Rows affected |
+|---|---|--------------------------------------------------------------------------|---|
+| 1 | Exact duplicate row (customer 1014) | Removed with `drop_duplicates()`                                         | 1 |
+| 2 | Missing `age` | [Dropped the row]                                                        | 1 |
+| 3 | Missing `total_spending` | [Recomputed as `purchase_count × avg_order_value`]                       | [0 removed] |
+| 4 | Impossible age (145) | Replaced; with median[45]                                                | 1 |
+| 5 | Customer with `purchase_count = 0` | [Removed: no purchases, so not an active customer]                       | 1 |
+| 6 | `total_spending` inconsistent with `purchase_count × avg_order_value` (e.g. customer 1030: 25,000 vs about 4,079) | Corrected                                                              | [n] |
 | 7 | Wrong data types | `age` and count columns cast to nullable integers, `signup_date` parsed to datetime | all |
 
-**Result:** 61 rows in, [57] rows out, 0 missing values.
+**Result:** 61 rows in, 58 rows out, 0 missing values.
 
 Large spenders (over 10,000) whose totals are consistent with their order data were **kept**, since they are real customers and not errors.
-
-## Findings
-
-[Fill in after the analysis, for example:]
-- [Customers who used a discount spent on average X compared with Y for those who did not (median X vs Y). This is an association, not proof that discounts increase spending.]
-- [Customer distribution by city / membership tier.]
 
 ## Limitations
 
